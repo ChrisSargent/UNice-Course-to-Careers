@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-sm-12">
+        <form class="form-inline" ng-submit="search(searchTerms, 'codeROME')">
+            <div class="form-group">
+                <label for="codeSearch" class="form-label">Metiers:</label>
+                <input type="text" id="codeSearch" class="form-control" placeholder="Recherche codeROME..." ng-model="searchTerms">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" >Search Rome Codes</button>
+            </div>
+        </form>
+        <p>
+            Results for: {{searchTerms}}
+        </p>
+    </div>
+</div>
