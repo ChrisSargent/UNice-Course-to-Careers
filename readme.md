@@ -2,7 +2,7 @@ An unfinished project for a client who was building an app for prospective stude
 
 Built using Angular and Bootstrap. Includes a very small Angular API to integrate to a MySQL database.
 
-A demo can be found here: http://unicedemo.stickypixel.com/?#/K1902
+A demo can be found here: http://unicedemo.stickypixel.com
 
 This really a demo of the Angular work rather than the my front-end development! ;-)
 
