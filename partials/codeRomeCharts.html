@@ -1,27 +1,7 @@
-<div class="row">
-    <div class="col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">Search Rome Codes</h4>
-            </div>
-            <div class="panel-body">
-                <form class="form-inline" action="{{'/#/'+searchTerms}}">
-                    <div class="form-group">
-                        <label for="codeSearch" class="form-label">Display Code Rome Data:</label>
-                        <input type="text" id="codeSearch" class="form-control" placeholder="Code ROME..." ng-model="searchTerms">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" role="button" >Display</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row" ng-controller="pageCtrl">
+<div class="row" ng-controller="codeRomeSearch">
     <div class="col-md-12 text-center page-header chartPageHeading">
         <h3>Statistiques des enquetes</h3>
+        <p></p>
     </div>
     <div class="col-md-6" ng-repeat="chart in chartData">
         <div class="panel panel-default">
@@ -35,5 +15,26 @@
     </div>
     <div class="col-md-12 text-center chartPageHeading">
         <a href="http://recrutement.pole-emploi.fr/fichesrome/ficherome?codeRome={{codeROME}}" target="_blank" class="btn btn-info btn-lg">Fiche associée sur le site de Pôle Emploi</a>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Here's a list of all the Diplomas that led to students having careers with the following CodeROME {{ codeROME }}.</p>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Intitulé emploi</th>
+                        <th>Spécialité Diplôme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="career in rawData | unique:'Spécialité_diplôme'">
+<!--                    <tr ng-repeat="career in rawData">-->
+                        <td ng-bind="career.Intitulé_emploi"></td>                    
+                        <td ng-bind="career.Spécialité_diplôme"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

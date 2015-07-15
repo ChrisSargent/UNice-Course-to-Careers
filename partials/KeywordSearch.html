@@ -1,0 +1,45 @@
+<div ng-controller="keywordSearch">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-inline" ng-submit="search(searchTerms, 'metiers')">
+                <div class="form-group">
+                    <label for="metierSearch" class="form-label">Keywords:</label>
+                    <input type="text" id="metierSearch" class="form-control" placeholder="Search Keywords..." ng-model="searchTerms">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Search Keywords</button>
+                </div>
+            </form>
+            <br>
+            <p>
+                Results for: {{searchTerms}}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Click on the table row to see chart data for that particular Code ROME.</p>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Intitulé emploi</th>
+                        <th>Spécialité Diplôme</th>
+                        <th>Niveau d'emploi</th>
+                        <th>Tranche de salaire</th>
+                        <th>Code ROME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="career in careers | unique: 'Intitulé_emploi'">
+                        <td><a href="{{'/#/'+career.CodeROME}}">{{ career.Intitulé_emploi }}</td>                    
+                        <td><a href="{{'/#/'+career.CodeROME}}">{{ career.Spécialité_diplôme }}</td>         
+                        <td><a href="{{'/#/'+career.CodeROME}}">{{ career.Niveau_emploi }}</td>
+                        <td><a href="{{'/#/'+career.CodeROME}}">{{ career.Classe_rémuneration_mensuelle }}</td>
+                        <td><a href="{{'/#/'+career.CodeROME}}">{{ career.CodeROME }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
