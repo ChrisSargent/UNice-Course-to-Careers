@@ -41,10 +41,11 @@ Thumbs.db
 .sass-cache
 *.css.map
 
-# Dependency directory
+# Directories
 ######################
 node_modules
 bower_components
+grunt
 
 # Others
 ######################
