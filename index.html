@@ -1,41 +1,59 @@
 <!DOCTYPE html>
-<html ng-app="searchApp">
+<html ng-app="app">
 
 <head>
     <title>Initial Search Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="js/angular.js"></script>
-    <script src="js/searchApp.js"></script>
-    <script src="js/searchControllers.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/angular-chart.js"></script>
-    <script src="js/dataFactory.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/angular-ui-router.min.js"></script>
+<!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>-->
+    <script src="/app/vendor/angular.js"></script>
+    <script src="app/vendor/angular-ui-router.min.js"></script>
+    <script src="app/vendor/chart.js"></script>
+    <script src="app/vendor/angular-chart.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="/app/controllers/chartsController.js"></script>
+    <script src="/app/controllers/searchController.js"></script>
+    <script src="/node_modules/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="app/filters/capitalize.js"></script>
+    <script src="app/filters/filters.js"></script>
+    <script src="app/services/getRawData.js"></script>
+    <script src="app/services/processData.js"></script>
+    <script src="app/services/uniqueValuesCount.js"></script>
+    <script src="app/services/convertObjToChartData.js"></script>
+    <script src="app/services/sortObject.js"></script>
+    <script src="node_modules/angular-filter/dist/angular-filter.js"></script>
+
     <link href="css/angular-chart.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <ul class="nav nav-tabs nav-justified">
-                <li><a ui-sref="state1">Keyword Search</a>
-                </li>
-                <li><a ui-sref="state2">Charts</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="row">
-            <div class="span12">
-                <div class="well" ui-view></div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars fa-lg"></i>
+                </button>
+                <a class="navbar-brand" ui-sref="#">Nice Uni Demo Site</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="search">Search</a></li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <div class="container" ui-view>
+    </div>
 </body>
 
 </html>

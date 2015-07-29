@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Recherche Metiers</h3>
+        <p>Quels sont les diplômes qui mènent à un certain métier (chercher un métier pour connaitre ces diplômes)?</p>
+    </div>
+    <div class="panel-body">
+        <form>
+            <label for="metierSearch" class="form-label sr-only">Recherche Metiers</label>
+            <div class="input-group">
+                <input type="text" id="metierSearch" class="form-control" placeholder="Recherche Metiers..." ng-model="searchTerms">
+                <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" ng-click="vm.search(searchTerms, 'metiers')">Recherche!</button>
+            </span>
+            </div>
+        </form>
+        <br>
+        <br>
+        <div class="c_results-wrap">
+            <div class="c_category-wrap" ng-repeat="rome1 in vm.results | groupBy:'ROME_niveau_1_lib'">
+                <a href="" class="c_category" ng-class="{'active': showMe, '': !showMe}" data-toggle="collapse" data-target="#result2{{$index}}" ng-click="showMe = !showMe">
+                    <span class="marker"><i class="fa fa-fw" ng-class="{'fa-caret-down': showMe, 'fa-caret-right': !showMe}"></i></span> {{ rome1[0].ROME_niveau_1_lib | uppercase }}
+                </a>
+                <div class="collapse" id="result2{{$index}}">
+                    <div class="c_subCategory-wrap" ng-repeat="rome2 in rome1 | groupBy:'ROME_niveau_2_lib'">
+                        <p class="c_subcategory">- {{ rome2[0].ROME_niveau_2_lib }}</p>
+                        <a class="c_speciality" ui-sref="crCharts({ searchTerm: intitule.CodeROME })" ng-repeat="intitule in rome2">-- {{ intitule.Intitulé_ROME }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

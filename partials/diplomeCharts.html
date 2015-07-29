@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>{{ vm.intituleROME }}</h3>
+        <h3>Diplome: {{ vm.specialityDiplome }}</h3>
         <p>Statistiques des enquetes</p>
     </div>
 
@@ -18,33 +18,31 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-            <a href="http://recrutement.pole-emploi.fr/fichesrome/ficherome?codeRome={{vm.searchTerm}}" target="_blank" class="btn btn-info btn-lg">Pôle Emploi Fiche</a>
+            <a href="unice/{{vm.searchTerm}}" target="_blank" class="btn btn-info btn-lg">Uni Fiche</a>
         </div>
     </div>
 </div>
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>Les diplômes</h3>
-        <p>Il y a {{ vm.numOfResults }} diplômes different qui mènent à ce métier: {{ vm.intituleROME }}</p>
+        <h3>Les metiers</h3>
+        <p>Il y a {{ vm.numOfResults }} metiers different qui sont accessibles par cette diplome: {{ vm.specialityDiplome }}</p>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Spécialité Diplôme</th>
-                    <th>Composante</th>
-                    <th>Filière Diplôme</th>
-                    <th>Mention Diplôme</th>
+                    <th>Intitulé ROME</th>
+                    <th>ROME Niveau 1</th>
+                    <th>ROME Niveau 2</th>
                     <th>Count</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="career in vm.sortedDataArr | limitTo: vm.limit">
-                    <td>{{ career[0].Spécialité_diplôme }}</td>
-                    <td>{{ career[0].Composante_diplôme }}</td>
-                    <td>{{ career[0].Filière_diplôme }}</td>
-                    <td>{{ career[0].Mention_diplôme }}</td>
+                    <td>{{ career[0].Intitulé_ROME }}</td>
+                    <td>{{ career[0].ROME_niveau_1_lib }}</td>
+                    <td>{{ career[0].ROME_niveau_2_lib }}</td>
                     <td>{{ career.length }}</td>
                 </tr>
             </tbody>

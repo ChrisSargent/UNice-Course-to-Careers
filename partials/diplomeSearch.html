@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Recherche Diplome</h3>
+        <p class="text-muted">Quels sont les métiers accessibles après un certain diplôme (chercher un diplôme pour connaitre ces métiers)?</p>
+
+    </div>
+    <div class="panel-body">
+        <form>
+            <label for="diplomeSearch" class="form-label sr-only">Recherche Diplomes</label>
+            <div class="input-group">
+                <input type="text" id="diplomeSearch" class="form-control" placeholder="Recherche Diplomes..." ng-model="searchTerms">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit" ng-click="vm.search(searchTerms, 'diplome')">Recherche!</button>
+                </span>
+            </div>
+        </form>
+        <br>
+        <br>
+        <div class="c_results-wrap">
+            <div class="c_category-wrap" ng-repeat="filiere in vm.results | groupBy:'Filière_diplôme '">
+                <a href="" class="c_category" ng-class="{'active': showMe, '': !showMe}" data-toggle="collapse" data-target="#result{{$index}}" ng-click="showMe = !showMe">
+                    <span class="marker"><i class="fa fa-fw" ng-class="{'fa-caret-down': showMe, 'fa-caret-right': !showMe}"></i></span> {{ filiere[0].Filière_diplôme | uppercase }}
+                </a>
+                <div class="collapse" id="result{{$index}}">
+                    <div class="c_subCategory-wrap" ng-repeat="mention in filiere | groupBy:'Mention_diplôme '">
+                        <p class="c_subcategory">- {{ mention[0].Mention_diplôme | uppercase }}</p>
+                        <a class="c_speciality" ui-sref="dipCharts({ searchTerm: specialite.Code_diplôme })" ng-repeat="specialite in mention">-- {{ specialite.Spécialité_diplôme | uppercase }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
